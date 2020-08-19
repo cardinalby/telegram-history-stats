@@ -1,4 +1,4 @@
-package main
+package telegram_history_stats
 
 type chatStats struct {
 	sessionsStartedByMe      int64
