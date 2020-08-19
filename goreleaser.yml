@@ -1,0 +1,9 @@
+build:
+  binary: tlgstats
+  goarch:
+    - amd64
+    - 386
+  goos:
+    - windows
+    - darwin
+    - linux
