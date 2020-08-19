@@ -1,5 +1,5 @@
 builds:
   - id: tlgstats
-    workdir: app
-    main: main.go
+    dir: app
+    main: ./main.go
     binary: tlgstats
