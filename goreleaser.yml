@@ -7,3 +7,7 @@ build:
     - windows
     - darwin
     - linux
+  env:
+    - CGO_ENABLED=0
+  ldflags:
+    - "-extldflags '-static'"
