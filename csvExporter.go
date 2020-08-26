@@ -72,10 +72,10 @@ func (exporter csvExporter) WriteRecord(chatName string, stats *chatStats) error
 }
 
 func (exporter csvExporter) Close() {
-	if exporter.file != nil {
-		_ = exporter.file.Close()
-	}
 	if exporter.writer != nil {
 		exporter.writer.Flush()
+	}
+	if exporter.file != nil {
+		_ = exporter.file.Close()
 	}
 }
