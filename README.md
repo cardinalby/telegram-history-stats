@@ -1,3 +1,5 @@
+![Release](https://github.com/cardinalby/telegram-history-stats/workflows/Release/badge.svg)
+
 ## Telegram chats statistics
 
 It's only a learning project!
@@ -5,7 +7,9 @@ It's only a learning project!
 The applications analyzes your chats (excluding groups) and 
 calculates some interesting statistics.
 
-Use Telegram Desktop to export your chats history (you may not include media data).
+Use Telegram Desktop to export your chats history to HTML format 
+(tested only with private chats without images/contacts). 
+See: [https://telegram.org/blog/export-and-more](https://telegram.org/blog/export-and-more).
 Then run:
 
 ```
