@@ -1,4 +1,4 @@
-package telegram_history_stats
+package main
 
 import (
 	"github.com/PuerkitoBio/goquery"
