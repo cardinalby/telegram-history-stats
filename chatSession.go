@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"time"
+	"unicode/utf8"
+)
 
 type chatSession struct {
 	myMessages          int
@@ -27,7 +30,7 @@ func splitIntoSessions(
 		var session *chatSession
 		var prevMessage *chatMessage
 		for message := range messages {
-			// If should create new session
+			// If we should create new session
 			if session == nil || message.time.Sub(session.finishedAt) > splitDuration {
 				if session != nil {
 					select {
@@ -50,10 +53,10 @@ func splitIntoSessions(
 
 			session.finishedAt = message.time
 			if message.fromMe {
-				session.myChars += len(message.text)
+				session.myChars += utf8.RuneCountInString(message.text)
 				session.myMessages++
 			} else {
-				session.contactChars += len(message.text)
+				session.contactChars += utf8.RuneCountInString(message.text)
 				session.contactMessages++
 			}
 			prevMessage = message

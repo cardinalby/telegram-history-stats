@@ -20,7 +20,7 @@ func main() {
 	if len(os.Args) > 2 {
 		hours, err := strconv.Atoi(os.Args[2])
 		if err != nil {
-			panic("Second arg (split interval, hours) is not integer")
+			panic("Second arg (split interval, hours) is not an integer")
 		}
 		splitDuration = time.Hour * time.Duration(hours)
 	}

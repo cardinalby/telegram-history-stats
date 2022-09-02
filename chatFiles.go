@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"os"
 	"path"
 )
 
@@ -15,8 +15,8 @@ func getChatFiles(historyDir string, done <-chan struct{}) (<-chan *chatFiles, <
 	errors := make(chan error)
 
 	chatsDirPath := path.Join(historyDir, "chats")
-	chats, err := ioutil.ReadDir(chatsDirPath)
 	go func() {
+		chats, err := os.ReadDir(chatsDirPath)
 		defer close(result)
 		defer close(errors)
 
@@ -30,7 +30,7 @@ func getChatFiles(historyDir string, done <-chan struct{}) (<-chan *chatFiles, <
 				continue
 			}
 			chatDirPath := path.Join(chatsDirPath, dir.Name())
-			chatFilesInfo, err := ioutil.ReadDir(chatDirPath)
+			chatDirEntries, err := os.ReadDir(chatDirPath)
 			if err != nil {
 				select {
 				case errors <- err:
@@ -43,7 +43,7 @@ func getChatFiles(historyDir string, done <-chan struct{}) (<-chan *chatFiles, <
 				chatDir: chatDirPath,
 				files:   []string{},
 			}
-			for _, file := range chatFilesInfo {
+			for _, file := range chatDirEntries {
 				if !file.IsDir() {
 					resultItem.files = append(resultItem.files, path.Join(chatDirPath, file.Name()))
 				}

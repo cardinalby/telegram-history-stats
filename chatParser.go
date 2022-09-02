@@ -39,7 +39,6 @@ func readChatFilesMessages(files *chatFiles, done <-chan struct{}) chan *chatMes
 				case <-done:
 					return
 				}
-
 			}
 		}
 	}()
